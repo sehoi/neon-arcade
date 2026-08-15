@@ -1,6 +1,6 @@
 # NEON ARCADE
 
-세 게임을 고르는 허브 페이지.
+네 게임을 고르는 허브 페이지.
 
 ### ▶ [https://sehoi.github.io/neon-arcade/](https://sehoi.github.io/neon-arcade/)
 
@@ -9,6 +9,7 @@
 | [NEON PURGE](https://sehoi.github.io/neon-purge/) | 뱀서라이크, 10분 | 가로 | [sehoi/neon-purge](https://github.com/sehoi/neon-purge) |
 | [NEON COIL](https://sehoi.github.io/neon-coil/) | slither.io 계열 | 가로 | [sehoi/neon-coil](https://github.com/sehoi/neon-coil) |
 | [NEON FIREWALL](https://sehoi.github.io/neon-firewall/) | 갤러그 계열 고정 슈터 | 세로 | [sehoi/neon-firewall](https://github.com/sehoi/neon-firewall) |
+| [NEON HANDSHAKE](https://sehoi.github.io/neon-handshake/) | 1:1 격투, 3버튼 | 가로 | [sehoi/neon-handshake](https://github.com/sehoi/neon-handshake) |
 
 ## 구성
 
