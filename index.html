@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEON ARCADE</title>
+<meta name="description" content="브라우저에서 바로 돌아가는 네온 아케이드 세 편. 빌드 도구도, 라이브러리도, 에셋 파일도 없이 Canvas 2D와 WebAudio만으로.">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #070711;
+    --grid: #141a33;
+    --text: #e6f2ff;
+    --dim: #7b88a8;
+    --cyan: #00f0ff;
+    --magenta: #ff2e88;
+    --lime: #8cff3d;
+    --gold: #ffd23d;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    /* 배경 격자 — 세 게임과 같은 결 */
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 74px 74px;
+    padding:
+      calc(env(safe-area-inset-top, 0px) + 48px)
+      calc(env(safe-area-inset-right, 0px) + 20px)
+      calc(env(safe-area-inset-bottom, 0px) + 48px)
+      calc(env(safe-area-inset-left, 0px) + 20px);
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; }
+
+  header { text-align: center; margin-bottom: 46px; }
+
+  h1 {
+    font-size: clamp(38px, 9vw, 68px);
+    letter-spacing: 0.06em;
+    color: var(--cyan);
+    text-shadow: 0 0 24px rgba(0, 240, 255, 0.55);
+    font-weight: 700;
+  }
+
+  .tagline { margin-top: 12px; font-size: clamp(13px, 3.2vw, 15px); color: var(--dim); line-height: 1.7; }
+  .tagline b { color: var(--text); font-weight: 600; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    --accent: var(--cyan);
+    display: flex;
+    flex-direction: column;
+    background: rgba(9, 12, 26, 0.92);
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 22px 22px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  }
+
+  .card:hover, .card:focus-visible {
+    transform: translateY(-4px);
+    background: rgba(14, 20, 40, 0.96);
+    box-shadow: 0 0 28px -6px var(--accent);
+    outline: none;
+  }
+  .card:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+  .art { display: block; width: 100%; height: 132px; margin-bottom: 16px; }
+
+  .name { font-size: 22px; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 6px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tag {
+    font-size: 11px; color: var(--dim);
+    border: 1px solid #26304e; border-radius: 2px;
+    padding: 2px 7px;
+  }
+
+  .desc { font-size: 13.5px; line-height: 1.75; color: #b9c6e0; flex: 1; }
+
+  .meta {
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid #1d2540;
+    font-size: 12px; color: var(--dim);
+    display: flex; justify-content: space-between; gap: 10px;
+  }
+  .play { color: var(--accent); font-weight: 600; }
+
+  footer { margin-top: 46px; text-align: center; font-size: 12.5px; color: var(--dim); line-height: 1.9; }
+  footer a { color: var(--dim); }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 640px) {
+    .art { height: 112px; }
+    .card { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>NEON ARCADE</h1>
+    <p class="tagline">
+      브라우저에서 바로 돌아가는 아케이드 세 편.<br>
+      빌드 도구도, 라이브러리도, <b>에셋 파일도 없이</b> Canvas 2D와 WebAudio만으로.
+    </p>
+  </header>
+
+  <main class="grid">
+
+    <a class="card" style="--accent: var(--magenta)" href="https://sehoi.github.io/neon-purge/">
+      <svg class="art" viewBox="0 0 300 132" aria-hidden="true">
+        <!-- 뱀서라이크: 중앙의 플레이어와 퍼지는 파동, 몰려오는 적 -->
+        <g fill="none" stroke-width="2">
+          <circle cx="150" cy="66" r="26" stroke="#00f0ff" opacity="0.5"/>
+          <circle cx="150" cy="66" r="42" stroke="#00f0ff" opacity="0.22"/>
+          <path d="M150 52 L160 76 L150 71 L140 76 Z" stroke="#00f0ff" stroke-linejoin="round"/>
+          <polygon points="52,34 62,52 42,52"   stroke="#ff2e88"/>
+          <polygon points="248,40 258,58 238,58" stroke="#ff2e88"/>
+          <rect x="60" y="88" width="20" height="20" stroke="#ff3b6e"/>
+          <polygon points="228,96 242,104 228,112 214,104" stroke="#ff6bb0"/>
+          <polygon points="106,18 116,26 106,34 96,26" stroke="#ff6bb0"/>
+          <polygon points="196,110 206,118 196,126 186,118" stroke="#ff6bb0"/>
+        </g>
+        <g fill="#8cff3d">
+          <rect x="98" y="86" width="6" height="6" transform="rotate(45 101 89)"/>
+          <rect x="188" y="44" width="6" height="6" transform="rotate(45 191 47)"/>
+          <rect x="132" y="112" width="6" height="6" transform="rotate(45 135 115)"/>
+        </g>
+      </svg>
+      <h2 class="name">NEON PURGE</h2>
+      <div class="tags"><span class="tag">뱀서라이크</span><span class="tag">10분</span><span class="tag">가로</span></div>
+      <p class="desc">
+        사방에서 밀려드는 악성코드를 자동 공격으로 정화한다.
+        조작은 이동과 대시뿐 — 레벨업마다 무기와 강화를 골라 빌드를 쌓는다.
+      </p>
+      <div class="meta"><span>무기 5종 · 보스 3페이즈 · 업적 12개</span><span class="play">실행 ▶</span></div>
+    </a>
+
+    <a class="card" style="--accent: var(--lime)" href="https://sehoi.github.io/neon-coil/">
+      <svg class="art" viewBox="0 0 300 132" aria-hidden="true">
+        <!-- 지렁이: 길게 감긴 몸과 머리, 흩어진 먹이 -->
+        <path d="M18 104 C70 128, 96 40, 148 58 S222 116, 268 44"
+              fill="none" stroke="#00f0ff" stroke-width="15" stroke-linecap="round" opacity="0.22"/>
+        <path d="M18 104 C70 128, 96 40, 148 58 S222 116, 268 44"
+              fill="none" stroke="#00f0ff" stroke-width="9" stroke-linecap="round"/>
+        <path d="M18 104 C70 128, 96 40, 148 58 S222 116, 268 44"
+              fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+        <circle cx="268" cy="44" r="11" fill="#00f0ff"/>
+        <circle cx="271" cy="40" r="2.6" fill="#04060f"/>
+        <circle cx="265" cy="47" r="2.6" fill="#04060f"/>
+        <g fill="#8cff3d">
+          <circle cx="60" cy="40" r="4"/><circle cx="96" cy="96" r="4"/>
+          <circle cx="196" cy="30" r="4"/><circle cx="228" cy="98" r="4"/>
+          <circle cx="128" cy="24" r="4"/>
+        </g>
+        <circle cx="164" cy="106" r="6.5" fill="#ffd23d"/>
+      </svg>
+      <h2 class="name">NEON COIL</h2>
+      <div class="tags"><span class="tag">slither.io 계열</span><span class="tag">NPC 19기</span><span class="tag">가로</span></div>
+      <p class="desc">
+        데이터를 삼켜 길어지고, 다른 코일을 몸으로 막아 터뜨린다.
+        길수록 강하지만 <b>길수록 둔해진다</b> — 1위가 되는 순간부터가 진짜 위험이다.
+      </p>
+      <div class="meta"><span>서버 없음 · 강화 아이템 · 로컬 기록</span><span class="play">실행 ▶</span></div>
+    </a>
+
+    <a class="card" style="--accent: var(--gold)" href="https://sehoi.github.io/neon-firewall/">
+      <svg class="art" viewBox="0 0 300 132" aria-hidden="true">
+        <!-- 갤러그: 위쪽 편대와 아래쪽 기체, 올라가는 탄 -->
+        <g fill="none" stroke="#ff2e88" stroke-width="2">
+          <polygon points="76,16 84,32 68,32"/>
+          <polygon points="118,16 126,32 110,32"/>
+          <polygon points="160,16 168,32 152,32"/>
+          <polygon points="202,16 210,32 194,32"/>
+        </g>
+        <g fill="none" stroke="#ff6bb0" stroke-width="2">
+          <rect x="90" y="44" width="16" height="16" transform="rotate(45 98 52)"/>
+          <rect x="132" y="44" width="16" height="16" transform="rotate(45 140 52)"/>
+          <rect x="174" y="44" width="16" height="16" transform="rotate(45 182 52)"/>
+        </g>
+        <polygon points="234,44 246,56 234,68 222,56" fill="none" stroke="#ffd23d" stroke-width="2.5"/>
+        <g fill="#8cff3d">
+          <rect x="139" y="72" width="3" height="12" rx="1.5"/>
+          <rect x="128" y="86" width="3" height="12" rx="1.5"/>
+          <rect x="150" y="86" width="3" height="12" rx="1.5"/>
+        </g>
+        <circle cx="188" cy="80" r="4" fill="#ff7a4d"/>
+        <circle cx="104" cy="92" r="4" fill="#ff7a4d"/>
+        <path d="M140 100 L152 122 L140 117 L128 122 Z" fill="none" stroke="#00f0ff" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+      <h2 class="name">NEON FIREWALL</h2>
+      <div class="tags"><span class="tag">갤러그 계열</span><span class="tag">한 손 조작</span><span class="tag">세로</span></div>
+      <p class="desc">
+        편대를 지어 내려오는 침입 패킷을 막아낸다.
+        <b>급강하하는 적을 잡으면 점수 2배</b> — 안전하게 갉기만 해서는 점수가 오르지 않는다.
+      </p>
+      <div class="meta"><span>보스 3종 · 레벨 무한 · 로컬 기록</span><span class="play">실행 ▶</span></div>
+    </a>
+
+  </main>
+
+  <footer>
+    셋 다 <b>에셋 파일 0개</b> — 그래픽은 Canvas 벡터, 사운드는 WebAudio 절차 생성.<br>
+    데스크톱과 모바일 모두 지원하며, 기록은 브라우저에 저장된다.<br>
+    <a href="https://github.com/sehoi?tab=repositories&q=neon">소스 보기</a>
+  </footer>
+
+</div>
+</body>
+</html>
