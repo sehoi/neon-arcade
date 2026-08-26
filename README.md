@@ -1,6 +1,6 @@
 # NEON ARCADE
 
-네 게임을 고르는 허브 페이지.
+다섯 게임을 고르는 허브 페이지.
 
 ### ▶ [https://sehoi.github.io/neon-arcade/](https://sehoi.github.io/neon-arcade/)
 
@@ -10,11 +10,12 @@
 | [NEON COIL](https://sehoi.github.io/neon-coil/) | slither.io 계열 | 가로 | [sehoi/neon-coil](https://github.com/sehoi/neon-coil) |
 | [NEON FIREWALL](https://sehoi.github.io/neon-firewall/) | 갤러그 계열 고정 슈터 | 세로 | [sehoi/neon-firewall](https://github.com/sehoi/neon-firewall) |
 | [NEON HANDSHAKE](https://sehoi.github.io/neon-handshake/) | 1:1 격투, 3버튼 | 가로 | [sehoi/neon-handshake](https://github.com/sehoi/neon-handshake) |
+| [NEON TRIAD](https://sehoi.github.io/neon-coil/triad/) | 3매치 타일 | 세로 | [sehoi/neon-coil](https://github.com/sehoi/neon-coil) (`triad/`) |
 
 ## 구성
 
 `index.html` **한 파일**이 전부다. CSS는 인라인, 게임 썸네일은 손으로 쓴 인라인 SVG —
-이미지 파일도, 폰트 파일도, 스크립트도 없다. 세 게임의 "에셋 파일 0개" 원칙을 그대로 따랐다.
+이미지 파일도, 폰트 파일도, 스크립트도 없다. 다섯 게임의 "에셋 파일 0개" 원칙을 그대로 따랐다.
 
 `serve.mjs` 는 로컬 확인용 정적 서버다.
 
@@ -28,11 +29,11 @@ http://localhost:5176 (`PORT` 환경변수로 바꿀 수 있다)
 
 | 폭 | 결과 |
 |---|---|
-| 1280px | 3열, 카드 높이 균일(372px), 가로 넘침 없음 |
-| 375px | 1열, 카드 335px, 가로 넘침 없음 |
+| 1280px | 3열 + 2열, 행 안에서 카드 높이 균일(401 / 377px), 가로 넘침 없음 |
+| 375px | 1열, 가로 넘침 없음 |
 | 320px | 1열, 하단 메타가 2줄로 접힘. 잘림·넘침 없음 |
 
-링크 3개 모두 200 응답. 콘솔 오류 없음.
+카드 5장, 콘솔 오류 없음.
 
 ## 왜 별도 저장소인가
 
