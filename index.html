@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NEON ARCADE</title>
-<meta name="description" content="브라우저에서 바로 돌아가는 네온 아케이드 세 편. 빌드 도구도, 라이브러리도, 에셋 파일도 없이 Canvas 2D와 WebAudio만으로.">
+<meta name="description" content="브라우저에서 바로 돌아가는 네온 아케이드 다섯 편. 빌드 도구도, 라이브러리도, 에셋 파일도 없이 Canvas 2D와 WebAudio만으로.">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,6 +17,8 @@
     --magenta: #ff2e88;
     --lime: #8cff3d;
     --gold: #ffd23d;
+    --violet: #b06bff;
+    --mint: #46f0d0;
   }
 
   html { -webkit-text-size-adjust: 100%; }
@@ -118,7 +120,7 @@
   <header>
     <h1>NEON ARCADE</h1>
     <p class="tagline">
-      브라우저에서 바로 돌아가는 아케이드 네 편.<br>
+      브라우저에서 바로 돌아가는 아케이드 다섯 편.<br>
       빌드 도구도, 라이브러리도, <b>에셋 파일도 없이</b> Canvas 2D와 WebAudio만으로.
     </p>
   </header>
@@ -248,10 +250,57 @@
       <div class="meta"><span>캐릭터 3종 · AI 3단계 · 아케이드/생존</span><span class="play">실행 ▶</span></div>
     </a>
 
+
+    <a class="card" style="--accent: var(--mint)" href="https://sehoi.github.io/neon-coil/triad/">
+      <svg class="art" viewBox="0 0 300 132" aria-hidden="true">
+        <!-- 3매치: 뒤에 깔린 덮인 타일, 집을 수 있는 같은 무늬 세 장, 아래 트레이 -->
+        <g fill="#141c33" stroke="#2b3760" stroke-width="2">
+          <rect x="40" y="8" width="40" height="50" rx="5"/>
+          <rect x="220" y="8" width="40" height="50" rx="5"/>
+          <rect x="26" y="40" width="40" height="50" rx="5"/>
+          <rect x="234" y="40" width="40" height="50" rx="5"/>
+        </g>
+        <g fill="#dde5f5" stroke="#8e97ad" stroke-width="1.5">
+          <rect x="78" y="12" width="44" height="56" rx="6"/>
+          <rect x="128" y="12" width="44" height="56" rx="6"/>
+          <rect x="178" y="12" width="44" height="56" rx="6"/>
+        </g>
+        <g fill="#ffd23d">
+          <polygon points="100,28 110,34 110,46 100,52 90,46 90,34"/>
+          <polygon points="150,28 160,34 160,46 150,52 140,46 140,34"/>
+          <polygon points="200,28 210,34 210,46 200,52 190,46 190,34"/>
+        </g>
+        <g fill="none" stroke="#46f0d0" stroke-width="2" opacity="0.45">
+          <rect x="51" y="92" width="24" height="28" rx="4"/>
+          <rect x="80" y="92" width="24" height="28" rx="4"/>
+          <rect x="109" y="92" width="24" height="28" rx="4"/>
+          <rect x="138" y="92" width="24" height="28" rx="4"/>
+          <rect x="167" y="92" width="24" height="28" rx="4"/>
+          <rect x="196" y="92" width="24" height="28" rx="4"/>
+          <rect x="225" y="92" width="24" height="28" rx="4"/>
+        </g>
+        <g fill="#dde5f5">
+          <rect x="53" y="94" width="20" height="24" rx="3"/>
+          <rect x="82" y="94" width="20" height="24" rx="3"/>
+        </g>
+        <g fill="#ff2e88">
+          <polygon points="63,100 69,112 57,112"/>
+          <polygon points="92,100 98,112 86,112"/>
+        </g>
+      </svg>
+      <h2 class="name">NEON TRIAD</h2>
+      <div class="tags"><span class="tag">3매치 타일</span><span class="tag">레벨 무한</span><span class="tag">세로</span></div>
+      <p class="desc">
+        덮이지 않은 타일만 집어 같은 무늬 셋을 모은다.
+        <b>반드시 풀리게 만든 판</b>이지만 트레이는 일곱 칸뿐 — 막히는 건 판이 아니라 순서다.
+      </p>
+      <div class="meta"><span>도구 3종 · 이어하기 · 로컬 기록</span><span class="play">실행 ▶</span></div>
+    </a>
+
   </main>
 
   <footer>
-    넷 다 <b>에셋 파일 0개</b> — 그래픽은 Canvas 벡터, 사운드는 WebAudio 절차 생성.<br>
+    다섯 편 모두 <b>에셋 파일 0개</b> — 그래픽은 Canvas 벡터, 사운드는 WebAudio 절차 생성.<br>
     데스크톱과 모바일 모두 지원하며, 기록은 브라우저에 저장된다.<br>
     <a href="https://github.com/sehoi?tab=repositories&q=neon">소스 보기</a>
   </footer>
