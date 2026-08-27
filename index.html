@@ -253,34 +253,61 @@
 
     <a class="card" style="--accent: var(--mint)" href="https://sehoi.github.io/neon-coil/triad/">
       <svg class="art" viewBox="0 0 300 132" aria-hidden="true">
-        <!-- 3D 더미: 상자에 쏟아져 제멋대로 기운 타일들, 하나는 엎어졌다 -->
+        <!-- 바로 위에서 내려다본 더미: 제멋대로 기운 마작패, 하나는 엎어졌다 -->
         <defs>
           <g id="tri-tile">
-            <rect x="-17" y="-22" width="34" height="44" rx="4" fill="#9aa3b4"/>
-            <rect x="-17" y="-24" width="34" height="44" rx="4" fill="#f2f0e8" stroke="#8e97ad" stroke-width="1"/>
+            <rect x="-16" y="-21" width="32" height="42" rx="3" fill="#b7b1a2"/>
+            <rect x="-16" y="-23" width="32" height="42" rx="3" fill="#f4f1e6" stroke="#8e8778" stroke-width="1"/>
           </g>
         </defs>
-        <polygon points="34,120 266,120 238,40 62,40" fill="#0b2620" stroke="#46f0d0" stroke-width="1.5" opacity="0.9"/>
-        <g transform="translate(72 92) rotate(-24)"><use href="#tri-tile"/></g>
-        <g transform="translate(228 96) rotate(18)"><use href="#tri-tile"/></g>
-        <g transform="translate(108 60) rotate(9)"><use href="#tri-tile"/></g>
-        <g transform="translate(196 58) rotate(-12)"><use href="#tri-tile"/></g>
-        <g transform="translate(150 104) rotate(6)"><use href="#tri-tile"/></g>
-        <g transform="translate(150 66) rotate(-6) scale(1.08)">
-          <rect x="-17" y="-22" width="34" height="44" rx="4" fill="#1d4f9e"/>
-          <rect x="-17" y="-24" width="34" height="44" rx="4" fill="#2f6fd0" stroke="#1b3f78" stroke-width="1"/>
+        <rect x="30" y="14" width="240" height="104" rx="4" fill="#0b2620" stroke="#46f0d0" stroke-width="1.5" opacity="0.9"/>
+
+        <g transform="translate(70 84) rotate(-24)">
+          <use href="#tri-tile"/>
+          <g fill="#1b7a3e">
+            <rect x="-9" y="-16" width="5" height="26" rx="2.5"/>
+            <rect x="-2.5" y="-16" width="5" height="26" rx="2.5"/>
+            <rect x="4" y="-16" width="5" height="26" rx="2.5"/>
+          </g>
+        </g>
+
+        <g transform="translate(226 88) rotate(18)">
+          <use href="#tri-tile"/>
+          <circle cx="0" cy="-2" r="9" fill="none" stroke="#1f3f9e" stroke-width="3.4"/>
+          <circle cx="0" cy="-2" r="5" fill="none" stroke="#1b7a3e" stroke-width="2"/>
+          <circle cx="0" cy="-2" r="2" fill="#c62828"/>
+        </g>
+
+        <g transform="translate(106 46) rotate(9)">
+          <use href="#tri-tile"/>
+          <g stroke="#c62828" fill="none">
+            <rect x="-10" y="-9" width="20" height="13" stroke-width="3.4"/>
+            <path d="M0 -18 L0 12" stroke-width="4"/>
+          </g>
+        </g>
+
+        <g transform="translate(196 44) rotate(-12)">
+          <use href="#tri-tile"/>
+          <rect x="-9" y="-15" width="18" height="25" rx="2" fill="none" stroke="#1f3f9e" stroke-width="3.2"/>
+        </g>
+
+        <g transform="translate(148 92) rotate(6)">
+          <use href="#tri-tile"/>
+          <g fill="none" stroke="#1f3f9e" stroke-width="2.6">
+            <circle cx="-6" cy="-11" r="4.6"/><circle cx="0" cy="-2" r="4.6"/><circle cx="6" cy="7" r="4.6"/>
+          </g>
+        </g>
+
+        <g transform="translate(150 52) rotate(-6) scale(1.06)">
+          <rect x="-16" y="-21" width="32" height="42" rx="3" fill="#1d4f9e"/>
+          <rect x="-16" y="-23" width="32" height="42" rx="3" fill="#2f6fd0" stroke="#1b3f78" stroke-width="1"/>
           <path d="M-7 -2 L0 -9 L7 -2 L0 5 Z" fill="none" stroke="#bcd6ff" stroke-width="1.6"/>
         </g>
-        <g transform="translate(72 92) rotate(-24)"><polygon points="0,-11 9,5 -9,5" fill="#ff2e88"/></g>
-        <g transform="translate(228 96) rotate(18)"><polygon points="0,-11 9.5,-5.5 9.5,5.5 0,11 -9.5,5.5 -9.5,-5.5" fill="#ffd23d"/></g>
-        <g transform="translate(108 60) rotate(9)"><circle cx="0" cy="-2" r="8.5" fill="none" stroke="#8cff3d" stroke-width="3"/></g>
-        <g transform="translate(196 58) rotate(-12)"><polygon points="0,-11 9,5 -9,5" fill="#ff2e88"/></g>
-        <g transform="translate(150 104) rotate(6)"><circle cx="0" cy="-2" r="8.5" fill="none" stroke="#8cff3d" stroke-width="3"/></g>
       </svg>
       <h2 class="name">NEON TRIAD</h2>
       <div class="tags"><span class="tag">3D 물리 3매치</span><span class="tag">레벨 무한</span><span class="tag">세로</span></div>
       <p class="desc">
-        상자에 쏟아 쌓은 타일 120장에서 같은 무늬 셋을 모은다.
+        상자에 쏟아 쌓은 마작패 120장을 바로 위에서 내려다보며 같은 무늬 셋을 모은다.
         <b>누를 수 있으면 무엇이든 집힌다</b> — 한 장을 빼면 그 위가 실제로 무너진다.
       </p>
       <div class="meta"><span>직접 쓴 물리 엔진 · 도구 4종</span><span class="play">실행 ▶</span></div>
